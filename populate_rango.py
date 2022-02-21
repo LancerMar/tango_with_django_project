@@ -1,4 +1,3 @@
-from nturl2path import url2pathname
 import os
 from unicodedata import category
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
@@ -12,8 +11,8 @@ def populate():
 
     python_pages = [
         {'title': 'Official Python Tutorial',
-        'url':'http://docs.python.org/3/tutorial/',
-        'views':'300'},
+         'url':'http://docs.python.org/3/tutorial/',
+         'views': 300,},
         {'title':'How to Think like a Computer Scientist',
          'url':'http://www.greenteapress.com/thinkpython/',
          'views':'200'},
@@ -38,17 +37,17 @@ def populate():
          'views':'110'},
         {'title':'Flask',
          'url':'http://flask.pocoo.org',
-         'views':'120'} ]
-
-    cats = {'Python': {'pages': python_pages,'views':'128','likes':'64'},
-            'Django': {'pages': django_pages,'views':'64','likes':'32'},
-            'Other Frameworks': {'pages': other_pages,'views':'32','likes':'16'} }
-
+         'views': 120} ]
+    
+    cats = {'Python': {'pages': python_pages, 'views': 128, 'likes': 64},
+            'Django': {'pages': django_pages, 'views': 64, 'likes': 32},
+            'Other Frameworks': {'pages': other_pages, 'views': 32, 'likes': 16} }
+    
     for cat, cat_data in cats.items():
-        c = add_cat(cat,cat_data['views'],cat_data['likes'])
+        c = add_cat(cat, views=cat_data['views'], likes=cat_data['likes'])
         for p in cat_data['pages']:
-            add_page(c, p['title'], p['url'],p['views'])
-
+            add_page(c, p['title'], p['url'], views=p['views'])
+    
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
             print(f'- {c}: {p}')

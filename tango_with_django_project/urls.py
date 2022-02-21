@@ -1,7 +1,3 @@
-'''
-Author: your name
-Date: 2022-01-18 09:25:19
-'''
 """tango_with_django_project URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
